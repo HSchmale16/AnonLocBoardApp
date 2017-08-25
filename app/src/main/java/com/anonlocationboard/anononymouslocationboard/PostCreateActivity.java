@@ -1,14 +1,10 @@
 package com.anonlocationboard.anononymouslocationboard;
 
-import android.os.StrictMode;
-import android.support.annotation.StringDef;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-
-import com.android.volley.RequestQueue;
 
 public class PostCreateActivity extends AppCompatActivity {
     public static final String TAG = "PostCreateActivity";
