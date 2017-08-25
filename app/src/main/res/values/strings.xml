@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Anononymous Location Board</string>
     <string name="action_settings">Settings</string>
+    <string name="post_title">Post Title</string>
+    <string name="post_body">Post Body</string>
+    <string name="create_post_button">Create Post</string>
 </resources>
