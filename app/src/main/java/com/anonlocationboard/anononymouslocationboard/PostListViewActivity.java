@@ -27,10 +27,23 @@ public class PostListViewActivity extends AppCompatActivity {
             }
         });
 
-        final ListView listview = (ListView) findViewById(R.id.post_list_view);
 
+        ListView lvItems = (ListView) findViewById(R.id.post_list_view);
 
+        lvItems.setOnScrollListener(new EndlessScrollListener() {
+            @Override
+            public boolean onLoadMore(int page, int totalItemsCount) {
+                loadNextDataFromApi(page);
+                return false;
+            }
+        });
     }
 
-
+    public void loadNextDataFromApi(int offset) {
+        // Send an API request to retrieve appropriate paginated data
+        //  --> Send the request including an offset value (i.e `page`) as a query parameter.
+        //  --> Deserialize and construct new model objects from the API response
+        //  --> Append the new data objects to the existing set of items inside the array of items
+        //  --> Notify the adapter of the new items made with `notifyDataSetChanged()`
+    }
 }
