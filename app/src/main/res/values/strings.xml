@@ -4,6 +4,8 @@
     <string name="post_title">Post Title</string>
     <string name="post_body">Post Body</string>
     <string name="create_post_button">Create Post</string>
-    <string name="Test_Title">Test_title</string>
+    <string name="Test_Title">A VERY LONG TEST TITLE</string>
     <string name="Test_UserId">Test_userId</string>
+    <string name="Test_location">(TEST E, TEST N) X.XX Mi</string>
+    <string name="Test_whenAt">12:00 AM 01/01/1970</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,11 +7,31 @@
         android:id="@+id/postTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Test_Title" />
+        android:text="@string/Test_Title"
+        android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/user_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Test_UserId" />
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/postTitle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Test_location" />
+
+            <TextView
+                android:id="@+id/whenAt"
+                android:text="@string/Test_whenAt"
+                android:layout_below="@id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
