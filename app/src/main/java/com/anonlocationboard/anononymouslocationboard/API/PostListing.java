@@ -45,7 +45,7 @@ public class PostListing {
         try {
             pl.id = jsonObject.getLong("id");
             pl.title = jsonObject.getString("title");
-            pl.clientId = UUID.fromString(jsonObject.getString("clientId"));
+            pl.clientId = UUID.fromString(jsonObject.getString("clientid"));
             pl.latitude = jsonObject.getDouble("latitude");
             pl.longitude = jsonObject.getDouble("longitude");
         } catch(JSONException e) {

@@ -1,0 +1,22 @@
+package com.anonlocationboard.anononymouslocationboard.API;
+
+import android.util.Log;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+/**
+ * Created by hschmale on 8/26/17.
+ */
+
+public class ApiRequestBuilder {
+    private static final String API_URL = "http://192.168.1.6:4000/";
+    private static final String LIST_POSTS = API_URL + "list_posts/%f/%f/%d";
+
+    public static final String TAG = "ApiRequestBuilder";
+
+    public static String getPostListUrl(double latitude, double longitude, int page) {
+        return String.format(LIST_POSTS, latitude, longitude, page);
+    }
+}

@@ -4,4 +4,6 @@
     <string name="post_title">Post Title</string>
     <string name="post_body">Post Body</string>
     <string name="create_post_button">Create Post</string>
+    <string name="Test_Title">Test_title</string>
+    <string name="Test_UserId">Test_userId</string>
 </resources>
