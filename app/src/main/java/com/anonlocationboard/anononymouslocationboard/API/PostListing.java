@@ -1,10 +1,18 @@
 package com.anonlocationboard.anononymouslocationboard.API;
 
+import android.text.format.DateUtils;
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 /**
@@ -18,6 +26,10 @@ public class PostListing {
     protected UUID    clientId;
     protected double  latitude;
     protected double  longitude;
+    protected long whenAt;
+
+    protected PostListing() {
+    }
 
     public String getTitle() {
         return title;
@@ -39,6 +51,42 @@ public class PostListing {
         return id;
     }
 
+    /**
+     * @return An northing easting based latitude and longitude as a string
+     */
+    public String getFormatedLatLong() {
+        StringBuilder format = new StringBuilder();
+
+        // do latitude first
+        if (latitude >= 0)
+            format.append("%f N, ");
+        else
+            format.append("%f S, ");
+
+        if (longitude >= 0)
+            format.append("%f E");
+        else
+            format.append("%f W");
+
+        return String.format(Locale.getDefault(), format.toString(), latitude, longitude);
+    }
+
+    protected void setDate(String date) {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        try {
+            Date date2 = (Date) format.parse(date);
+            whenAt = date2.getTime();
+        } catch (ParseException e) {
+            Log.v("ParseException", e.getMessage());
+        }
+    }
+
+    public String getRelativeDate() {
+        return DateUtils
+                .getRelativeTimeSpanString(whenAt, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS)
+                .toString();
+    }
+
     public static PostListing fromJson(JSONObject jsonObject) {
         PostListing pl = new PostListing();
 
@@ -48,6 +96,7 @@ public class PostListing {
             pl.clientId = UUID.fromString(jsonObject.getString("clientid"));
             pl.latitude = jsonObject.getDouble("latitude");
             pl.longitude = jsonObject.getDouble("longitude");
+            pl.setDate(jsonObject.getString("whenat"));
         } catch(JSONException e) {
             e.printStackTrace();
             return null;

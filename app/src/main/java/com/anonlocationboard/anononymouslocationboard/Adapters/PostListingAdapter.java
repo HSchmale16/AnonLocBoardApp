@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.anonlocationboard.anononymouslocationboard.API.PostListing;
 import com.anonlocationboard.anononymouslocationboard.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -25,7 +27,7 @@ public class PostListingAdapter extends ArrayAdapter<PostListing> {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         PostListing listing = getItem(position);
         if (convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_post_listing, parent, false);
@@ -33,6 +35,12 @@ public class PostListingAdapter extends ArrayAdapter<PostListing> {
         // TODO Work on the things displayed in the text view
         TextView title = convertView.findViewById(R.id.postTitle);
         title.setText(listing.getTitle());
+
+        TextView location = convertView.findViewById(R.id.location);
+        location.setText(listing.getFormatedLatLong());
+
+        TextView whenAt = convertView.findViewById(R.id.whenAt);
+        whenAt.setText(listing.getRelativeDate());
         return convertView;
     }
 }

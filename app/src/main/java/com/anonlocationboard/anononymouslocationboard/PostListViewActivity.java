@@ -2,6 +2,7 @@ package com.anonlocationboard.anononymouslocationboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -46,7 +47,6 @@ public class PostListViewActivity extends AppCompatActivity {
             }
         });
 
-
         // Setup the List View
         listings = new ArrayList<>();
         listingAdapter = new PostListingAdapter(this, listings);
@@ -54,9 +54,8 @@ public class PostListViewActivity extends AppCompatActivity {
         ListView lvItems = (ListView) findViewById(R.id.post_list_view);
         lvItems.setAdapter(listingAdapter);
 
-        loadNextDataFromApi(0);
 
-        lvItems.setOnScrollListener(new EndlessScrollListener(5, 1) {
+        lvItems.setOnScrollListener(new EndlessScrollListener(5, -1) {
             @Override
             public boolean onLoadMore(int page, int totalItemsCount) {
                 loadNextDataFromApi(page);
@@ -70,7 +69,8 @@ public class PostListViewActivity extends AppCompatActivity {
         //  --> Send the request including an offset value (i.e `page`) as a query parameter.
         //  --> Deserialize and construct new model objects from the API response
         //  --> Append the new data objects to the existing set of items inside the array of items
-        //  --> Notify the adapter of the new items made with `notifyDataSetChanged()`
+        //  --> Notify the adapter of the new items made with `notifyDataSetChanged()
+        Log.v(TAG, "offset: " + offset);
         Log.v(TAG, "Attempt load of more items");
         String url = ApiRequestBuilder.getPostListUrl(45, 50, offset);
         JsonArrayRequest req = new JsonArrayRequest(url,

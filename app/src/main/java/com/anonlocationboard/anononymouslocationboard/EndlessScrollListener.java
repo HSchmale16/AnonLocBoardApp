@@ -1,5 +1,6 @@
 package com.anonlocationboard.anononymouslocationboard;
 
+import android.util.Log;
 import android.widget.AbsListView;
 
 /**
@@ -10,7 +11,8 @@ public abstract class EndlessScrollListener implements AbsListView.OnScrollListe
     private int visibleThreshold = 5;
     private int currentPage = 0;
     private int previousTotalItemCount = 0;
-    private boolean loading = true;
+    private boolean loading = false;
+    public static String TAG = "EndlessScrollListener";
 
     private int startingPageIndex = 0;
 
@@ -39,6 +41,7 @@ public abstract class EndlessScrollListener implements AbsListView.OnScrollListe
         // changed, if so we conclude it has finished loading and update the current page
         // number and total item count.
         if (loading && (totalItemCount > previousTotalItemCount)) {
+            Log.v(TAG, "NO LOAD");
             loading = false;
             previousTotalItemCount = totalItemCount;
             currentPage++;
@@ -48,6 +51,7 @@ public abstract class EndlessScrollListener implements AbsListView.OnScrollListe
         // the visibleThreshold and need to reload more data.
         // If we do need to reload some more data, we execute onLoadMore to fetch the data.
         if (!loading && (firstVisibleItem + visibleItemCount + visibleThreshold) >= totalItemCount ) {
+            Log.v(TAG, "Init loading");
             loading = onLoadMore(currentPage + 1, totalItemCount);
         }
     }
