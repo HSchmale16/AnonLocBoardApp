@@ -89,7 +89,6 @@ public class PostListing {
 
     public String getRelativeDate() {
         Date now = new Date();
-        Log.v("PostListing", new Date(whenAt).toString() + " , " + now.toString());
         return DateUtils
                 .getRelativeTimeSpanString(whenAt, now.getTime(), DateUtils.SECOND_IN_MILLIS)
                 .toString();

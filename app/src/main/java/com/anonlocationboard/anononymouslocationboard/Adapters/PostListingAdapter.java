@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.anonlocationboard.anononymouslocationboard.API.PostListing;
@@ -41,6 +42,7 @@ public class PostListingAdapter extends ArrayAdapter<PostListing> {
 
         TextView whenAt = convertView.findViewById(R.id.whenAt);
         whenAt.setText(listing.getRelativeDate());
+
         return convertView;
     }
 }
