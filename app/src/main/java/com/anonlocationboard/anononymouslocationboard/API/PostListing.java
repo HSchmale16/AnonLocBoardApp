@@ -2,17 +2,21 @@ package com.anonlocationboard.anononymouslocationboard.API;
 
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.animation.ScaleAnimation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.UUID;
 
 /**
@@ -72,18 +76,22 @@ public class PostListing {
     }
 
     protected void setDate(String date) {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
+        format.setTimeZone(TimeZone.getTimeZone("UTC"));
         try {
-            Date date2 = (Date) format.parse(date);
+            Date date2 = format.parse(date);
             whenAt = date2.getTime();
+
         } catch (ParseException e) {
             Log.v("ParseException", e.getMessage());
         }
     }
 
     public String getRelativeDate() {
+        Date now = new Date();
+        Log.v("PostListing", new Date(whenAt).toString() + " , " + now.toString());
         return DateUtils
-                .getRelativeTimeSpanString(whenAt, new Date().getTime(), DateUtils.MINUTE_IN_MILLIS)
+                .getRelativeTimeSpanString(whenAt, now.getTime(), DateUtils.SECOND_IN_MILLIS)
                 .toString();
     }
 
