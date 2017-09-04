@@ -39,6 +39,7 @@ public class PostListingAdapter extends ArrayAdapter<PostListing> {
 
         // TODO Work on the things displayed in the text view
         TextView title = convertView.findViewById(R.id.postTitle);
+        assert listing != null;
         title.setText(listing.getTitle());
 
         TextView location = convertView.findViewById(R.id.location);

@@ -126,6 +126,7 @@ public class PostListing {
             }
 
             PostListing listing = PostListing.fromJson(plJson);
+
             if(listing != null)
                 listings.add(listing);
         }

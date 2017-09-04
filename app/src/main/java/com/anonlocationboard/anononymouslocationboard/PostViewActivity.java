@@ -38,6 +38,7 @@ public class PostViewActivity extends AppCompatActivity {
     private void makeView() {
         if (post == null)
             throw new IllegalStateException("Post must be set before this method can be called");
+        //noinspection ConstantConditions
         getSupportActionBar().setTitle(post.getTitle());
 
         TextView postText = (TextView) findViewById(R.id.postText);

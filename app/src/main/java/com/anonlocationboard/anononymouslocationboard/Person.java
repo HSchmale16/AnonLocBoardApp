@@ -14,12 +14,10 @@ import java.util.UUID;
 
 public class Person {
     private UUID id;
-    private final Context context;
     private final SharedPreferences sharedPrefs;
     private static final String TAG = "Person";
 
     public Person(Context context) {
-        this.context = context;
         sharedPrefs = context.getSharedPreferences("PersonIdentifier", 0);
 
         String s = sharedPrefs.getString("id", "NULL");
