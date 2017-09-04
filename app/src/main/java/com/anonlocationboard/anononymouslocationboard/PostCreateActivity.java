@@ -47,6 +47,6 @@ public class PostCreateActivity extends AppCompatActivity {
     }
 
     public void sendPost(String title, String body) {
-
+        //TODO: Connect to the location service
     }
 }

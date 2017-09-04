@@ -3,7 +3,6 @@ package com.anonlocationboard.anononymouslocationboard;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 
