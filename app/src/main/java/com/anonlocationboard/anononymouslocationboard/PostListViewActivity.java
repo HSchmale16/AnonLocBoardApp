@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
@@ -54,12 +55,21 @@ public class PostListViewActivity extends AppCompatActivity {
         ListView lvItems = (ListView) findViewById(R.id.post_list_view);
         lvItems.setAdapter(listingAdapter);
 
-
         lvItems.setOnScrollListener(new EndlessScrollListener(5, -1) {
             @Override
             public boolean onLoadMore(int page, int totalItemsCount) {
                 loadNextDataFromApi(page);
                 return true;
+            }
+        });
+
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                PostListing postListing = listingAdapter.getItem(i);
+                Intent intent = new Intent(PostListViewActivity.this, PostViewActivity.class);
+                intent.putExtra("id", postListing.getId());
+                startActivity(intent);
             }
         });
     }

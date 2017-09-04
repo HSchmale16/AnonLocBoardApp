@@ -1,15 +1,18 @@
 package com.anonlocationboard.anononymouslocationboard.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.anonlocationboard.anononymouslocationboard.API.PostListing;
+import com.anonlocationboard.anononymouslocationboard.PostViewActivity;
 import com.anonlocationboard.anononymouslocationboard.R;
 
 import org.w3c.dom.Text;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
  */
 
 public class PostListingAdapter extends ArrayAdapter<PostListing> {
+
     public PostListingAdapter(Context context, ArrayList<PostListing> listings) {
         super(context, 0, listings);
     }
@@ -45,4 +49,5 @@ public class PostListingAdapter extends ArrayAdapter<PostListing> {
 
         return convertView;
     }
+
 }

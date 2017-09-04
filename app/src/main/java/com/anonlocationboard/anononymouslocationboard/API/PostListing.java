@@ -1,5 +1,6 @@
 package com.anonlocationboard.anononymouslocationboard.API;
 
+import android.annotation.SuppressLint;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.animation.ScaleAnimation;
@@ -25,18 +26,18 @@ import java.util.UUID;
  */
 
 public class PostListing {
-    protected long    id;
-    protected String  title;
-    protected UUID    clientId;
-    protected double  latitude;
-    protected double  longitude;
-    protected long whenAt;
+    long id;
+    String title;
+    UUID clientId;
+    double latitude;
+    double longitude;
+    long whenAt;
 
     protected PostListing() {
     }
 
     public String getTitle() {
-        return title;
+        return title != null ? title : "";
     }
 
     public UUID getAuthor() {
@@ -76,6 +77,7 @@ public class PostListing {
     }
 
     protected void setDate(String date) {
+        @SuppressLint("SimpleDateFormat")
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
         format.setTimeZone(TimeZone.getTimeZone("UTC"));
         try {
